@@ -1,0 +1,20 @@
+.shell pwsh # can be one of cmd | pwsh | powershell
+# to run: Install-Module VirtualDesktop
+# https://github.com/MScholtes/PSVirtualDesktop 
+
+# copy config to ~\.config\whkdrc
+# run https://github.com/LGUG2Z/whkd
+
+
+alt + 1                 : Switch-Desktop -Desktop 0
+alt + 2                 : Switch-Desktop -Desktop 1
+alt + 3                 : Switch-Desktop -Desktop 2
+alt + 4                 : Switch-Desktop -Desktop 3
+alt + 5                 : Switch-Desktop -Desktop 4
+
+# Move windows across workspaces
+alt + shift + 1         : Move-Window -Desktop (Get-Desktop -Index 0) -hwnd (Get-ActiveWindowHandle)
+alt + shift + 2         : Move-Window -Desktop (Get-Desktop -Index 1) -hwnd (Get-ActiveWindowHandle)
+alt + shift + 3         : Move-Window -Desktop (Get-Desktop -Index 2) -hwnd (Get-ActiveWindowHandle)
+alt + shift + 4         : Move-Window -Desktop (Get-Desktop -Index 3) -hwnd (Get-ActiveWindowHandle)
+alt + shift + 5         : Move-Window -Desktop (Get-Desktop -Index 4) -hwnd (Get-ActiveWindowHandle)

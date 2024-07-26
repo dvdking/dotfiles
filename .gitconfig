@@ -1,0 +1,78 @@
+[user]
+	name = {username}
+	email = {username}@{email}
+[core]
+	excludesfile = C:\\Users\\{username}\\Documents\\gitignore_global.txt
+	autocrlf = true
+	pager = delta
+	editor = \"C:\\Users\\{username}\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+[push]
+	default = current
+	autoSetupRemote = true
+[alias]
+	pod = pull origin develop
+	ch = checkout
+	cp = cherry-pick
+	chb = checkout -b
+	pop = stash pop
+	podnr = pull origin develop --no-rebase
+	wat = log --author=\"{username}\" --all --pretty=format:\"%h%x09%an%x09%ad%x09%s\" --abbrev-commit
+	watother =  "!git log --author=\"$1\" --all --pretty=format:\"%h%x09%an%x09%ad%x09%s\" --abbrev-commit #"
+	c = "commit -m "
+	rb = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	st = status -s
+	autoresolve = mergetool --tool=LegionMergeTool
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[credential]
+	helper = wincred
+[safe]
+	directory = *
+[merge]
+    tool = unityyamlmerge
+	conflictStyle = zdiff3
+	keepbackup = false
+
+    [mergetool "unityyamlmerge"]
+    trustExitCode = false
+	keepBackup = false
+    cmd = '"C:/Program Files/Unity/Hub/Editor/2022.3.37f1/Editor/Data/Tools/UnityYAMLMerge.exe"' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	line-numbers = true
+
+[diff]
+    colorMoved = default
+	algorithm = histogram
+[remote "origin"]
+	prune = true
+[maintenance.task]
+	gc = disabled
+	commit-graph = enabled
+	prefetch = enabled
+	loose-objects = enabled
+	incremental-repack = enabled
+[rerere]
+	enabled = true
+# [help]
+	# autocorrect = promt
+[branch]
+	sort = -committerdate
+[log]
+	date = iso
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[feature]
+	manyFiles = true

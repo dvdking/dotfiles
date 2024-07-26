@@ -1,0 +1,64 @@
+set clipboard=unnamed
+set ignorecase
+set smartcase
+set autoindent
+set scrolloff=35
+set showmode
+set showcmd
+set visualbell
+
+set hlsearch                      " highlight search occurrences
+set ignorecase                    " ignore case in search patterns
+set smartcase                     " no ignore case when pattern is uppercase
+set incsearch                     " show search results while typing
+set wrapscan                      " searches wrap around the end of the file
+
+set clipboard+=ideaput
+set ideajoin
+set incsearch
+set highlightedyank
+set nerdtree
+set sneak
+
+" Map vim marks to IDEA global marks
+set ideamarks
+
+" cxiw to exchange word under cursor with other cxiw
+set exchange
+
+let mapleader = " "
+
+" edit ideavim config
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+nnoremap <leader>d "_d
+
+map Y y$
+
+" don't overwrite register when pasting over selection
+" vnoremap p pgvy
+
+" paste over rest of line
+" nnoremap <leader>p v$<Left>pgvy
+nnoremap <leader>p v$<Left>p
+
+" don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+map <leader>n <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+
+" Tab navigation
+nnoremap <A-n> :tabnext<CR>
+nnoremap <A-p> :tabprev<CR>\
+
+map <leader>x :NERDTreeToggle<CR>
+
+:map <leader>b <Action>(ToggleLineBreakpoint)
+
+""" IdeaVim actions
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
